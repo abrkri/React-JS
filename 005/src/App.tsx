@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <h1>lucsok</h1>
-      <Bemutatkozas nev={"Lucsok Péter Mihály"} kor={kor} />
+      <Bemutatkozas id={15} nev={"Lucsok Péter Mihály"} kor={kor} />
     </>
   );
 }

@@ -1,4 +1,5 @@
 type Props = {
+  id?: number;
   nev: string;
   kor: number;
 };
@@ -6,6 +7,8 @@ type Props = {
 const Bemutatkozas = (props: Props) => {
   return (
     <>
+      <h1>Azonosító: {props.id ?? <>N/A</>}</h1>
+      {props.id ? <>Azonosító: {props.id}</> : <>N/A</>}
       <h1>Hello {props.nev}!</h1>
       <h2>Te {props.kor} éves vagy!</h2>
       {props.kor > 18 ? (
