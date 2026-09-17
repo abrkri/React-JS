@@ -7,9 +7,10 @@ type Props = {
 const Bemutatkozas = (props: Props) => {
   return (
     <>
+      <h1>Hello {props.nev}!</h1>
+      <hr></hr>
       <h1>Azonosító: {props.id ?? <>N/A</>}</h1>
       {props.id ? <>Azonosító: {props.id}</> : <>N/A</>}
-      <h1>Hello {props.nev}!</h1>
       <h2>Te {props.kor} éves vagy!</h2>
       {props.kor > 18 ? (
         <p style={{ color: "green" }}>Te nagykorú vagy!</p>
