@@ -8,6 +8,11 @@ const Bemutatkozas = (props: Props) => {
     <>
       <h1>Hello {props.nev}!</h1>
       <h2>Te {props.kor} éves vagy!</h2>
+      {props.kor > 18 ? (
+        <p style={{ color: "green" }}>Te nagykorú vagy!</p>
+      ) : (
+        <p style={{ color: "red" }}>Te fiatalkorú vagy!</p>
+      )}
     </>
   );
 };
