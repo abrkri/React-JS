@@ -6,6 +6,7 @@ function App() {
   // console.log(new Date());
   const [szoveg, setSzoveg] = useState<string>("");
   const [eredmeny, setEredmeny] = useState<string>("");
+  const [valasztott, setValasztott] = useState<string>("");
 
   return (
     <>
@@ -19,9 +20,17 @@ function App() {
         type="text"
         placeholder="Írj be valamit..."
       />
+
+      <select onChange={(e) => setValasztott(e.target.value)}>
+        <option value="">Válassz egy opciót</option>
+        <option value="Első opció">Válassz egy opciót</option>
+        <option value="Második opció">Válassz egy opciót</option>
+        <option value="Harmadik opció">Válassz egy opciót</option>
+      </select>
+
       <button
         onClick={() => {
-          setEredmeny(`A megadott szöveg: ${szoveg}`);
+          setEredmeny(`A megadott szöveg: ${szoveg} | ${valasztott}`);
         }}
       >
         Print
