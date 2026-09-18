@@ -1,29 +1,31 @@
+import { useState } from "react";
 import "./App.css";
+import Gomb from "./Gomb";
 
 function App() {
-  const submit = () => {
-    alert("Megnyomva 3!");
-  };
-
-  const submit2 = (szoveg: string) => {
-    alert("Megnyomva 5!");
-  };
+  // console.log(new Date());
+  const [szoveg, setSzoveg] = useState<string>("");
+  const [eredmeny, setEredmeny] = useState<string>("");
 
   return (
     <>
-      <h1>Csaocsaocsao</h1>
+      {/* egy nagy lucsok egyenlore */}
+      <Gomb />
+      <h2>{eredmeny}</h2>
+      <h2>{szoveg}</h2>
 
-      <button onClick={() => alert("Megnyomva 1!")}>Nyomj meg 1</button>
+      <input
+        onChange={(e) => setSzoveg(e.target.value)}
+        type="text"
+        placeholder="Írj be valamit..."
+      />
       <button
         onClick={() => {
-          alert("Megnyomva 2!");
+          setEredmeny(`A megadott szöveg: ${szoveg}`);
         }}
       >
-        Nyomj meg 2
+        Print
       </button>
-      <button onClick={() => submit()}>Nyomj meg 3</button>
-      <button onClick={submit}>Nyomj meg 4</button>
-      <button onClick={() => submit2("Megnyomva 5!")}>Nyomj meg 5</button>
     </>
   );
 }
