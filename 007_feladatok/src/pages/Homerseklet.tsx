@@ -1,13 +1,12 @@
 import { useState } from "react";
-import "./App.css";
 
-function App() {
+const Homerseklet = () => {
   const [celsius, setCelsius] = useState<number>();
   const [farenheit, setFarenheit] = useState<string>();
   const [kelvin, setKelvin] = useState<string>();
   return (
     <>
-      <h1>Hőmérséklet</h1>
+      <h2>Hőmérséklet</h2>
 
       <input
         onChange={(e) => setCelsius(Number(e.target.value))}
@@ -26,6 +25,6 @@ function App() {
       <p>{farenheit}</p>
     </>
   );
-}
+};
 
-export default App;
+export default Homerseklet;
