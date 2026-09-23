@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")!).render(
     {/* <App /> */}
     {/* <Homerseklet /> */}
     {/* <Szamologep /> */}
-    <BMI />
-    {/* <Penzszamito /> */}
+    {/* <BMI /> */}
+    <Penzszamito />
   </StrictMode>,
 );
