@@ -1,22 +1,19 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Homerseklet = () => {
-  const [celsius, setCelsius] = useState<number>();
+  // const [celsius, setCelsius] = useState<number>();
+  const inputRef = useRef(null);
   const [farenheit, setFarenheit] = useState<string>();
   const [kelvin, setKelvin] = useState<string>();
   return (
     <>
       <h2>Hőmérséklet</h2>
 
-      <input
-        onChange={(e) => setCelsius(Number(e.target.value))}
-        type="number"
-        placeholder="36 C°"
-      />
+      <input ref={inputRef} type="number" placeholder="36 C°" />
       <button
         onClick={() => {
-          setFarenheit(String(celsius * 1.8 + 32) + " F");
-          setKelvin(String(celsius + 273.15) + " K");
+          setFarenheit(`${inputRef.current.value * 1.8 + 32} F`);
+          setKelvin(`${Number(inputRef.current.value) + 273.15} K`);
         }}
       >
         Átváltás

@@ -1,26 +1,22 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const BMI = () => {
-  const [testsuly, setTestsuly] = useState<number>(0);
-  const [magassag, setMagassag] = useState<number>(0);
+  // const [testsuly, setTestsuly] = useState<number>(0);
+  const testRef = useRef(null);
+  // const [magassag, setMagassag] = useState<number>(0);
+  const magassagRef = useRef(null);
   const [bmiIndex, setBmiIndex] = useState<string>("");
   const [szoveg, setSzoveg] = useState<string>("");
   return (
     <>
       <h2>BMI kalkulátor</h2>
-      <input
-        onChange={(e) => setTestsuly(Number(e.target.value))}
-        type="number"
-        placeholder="70"
-      />
-      <input
-        onChange={(e) => setMagassag(Number(e.target.value))}
-        type="number"
-        placeholder="178"
-      />
+      <input ref={testRef} type="number" placeholder="70" />
+      <input ref={magassagRef} type="number" placeholder="178" />
       <button
         onClick={() => {
-          const er = testsuly / (magassag / 100) ** 2;
+          const er =
+            Number(testRef.current.value) /
+            (Number(magassagRef.current.value) / 100) ** 2;
           if (er < 16) {
             setSzoveg("Az állapotod: Súlyos soványság");
           } else if (er >= 16 && er < 17) {

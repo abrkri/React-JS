@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Szamologep = () => {
-  const [elsoSzam, setElsoSzam] = useState<number>(0);
-  const [masodikSzam, setMasodikSzam] = useState<number>(0);
-  const [valasztott, setValasztott] = useState<string>("");
+  // const [elsoSzam, setElsoSzam] = useState<number>(0);
+  const elsoRef = useRef(null);
+  // const [masodikSzam, setMasodikSzam] = useState<number>(0);
+  const masodikRef = useRef(null);
+  const [valasztott, setValasztott] = useState<string>("+");
   const [eredmeny, setEredmeny] = useState<number>(0);
   return (
     <>
       <h2>Számológép</h2>
 
-      <input
-        onChange={(e) => setElsoSzam(Number(e.target.value))}
-        type="number"
-        placeholder="2"
-      />
+      <input ref={elsoRef} type="number" placeholder="2" />
       <select onChange={(e) => setValasztott(e.target.value)}>
         <option selected value="+">
           +
@@ -22,25 +20,33 @@ const Szamologep = () => {
         <option value="*">*</option>
         <option value="/">/</option>
       </select>
-      <input
-        onChange={(e) => setMasodikSzam(Number(e.target.value))}
-        type="number"
-        placeholder="3"
-      />
+      <input ref={masodikRef} type="number" placeholder="3" />
       <button
         onClick={() => {
           switch (valasztott) {
             case "+":
-              setEredmeny(elsoSzam + masodikSzam);
+              setEredmeny(
+                Number(elsoRef.current.value) +
+                  Number(masodikRef.current.value),
+              );
               break;
             case "-":
-              setEredmeny(elsoSzam - masodikSzam);
+              setEredmeny(
+                Number(elsoRef.current.value) -
+                  Number(masodikRef.current.value),
+              );
               break;
             case "*":
-              setEredmeny(elsoSzam * masodikSzam);
+              setEredmeny(
+                Number(elsoRef.current.value) *
+                  Number(masodikRef.current.value),
+              );
               break;
             case "/":
-              setEredmeny(elsoSzam / masodikSzam);
+              setEredmeny(
+                Number(elsoRef.current.value) /
+                  Number(masodikRef.current.value),
+              );
               break;
             default:
               setEredmeny(0);
