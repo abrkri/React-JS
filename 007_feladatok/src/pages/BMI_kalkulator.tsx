@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 
 const BMI = () => {
   // const [testsuly, setTestsuly] = useState<number>(0);
-  const testRef = useRef(null);
+  const testRef = useRef<HTMLInputElement>(null);
   // const [magassag, setMagassag] = useState<number>(0);
-  const magassagRef = useRef(null);
+  const magassagRef = useRef<HTMLInputElement>(null);
   const [bmiIndex, setBmiIndex] = useState<string>("");
   const [szoveg, setSzoveg] = useState<string>("");
   return (

@@ -2,16 +2,14 @@ import { useRef, useState } from "react";
 
 const Penzszamito = () => {
   // const [f, useF] = useState<number>(0);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [pnem, usePnem] = useState<string>("euro");
   const [eredmeny, useEredmeny] = useState<string>("");
   return (
     <>
       <input ref={inputRef} type="number" placeholder="67" />
       <select onChange={(e) => usePnem(e.target.value)} defaultValue="euro">
-        <option value="euro">
-          Euró
-        </option>
+        <option value="euro">Euró</option>
         <option value="dollar">Dollár</option>
       </select>
       <button
@@ -19,12 +17,12 @@ const Penzszamito = () => {
           switch (pnem) {
             case "euro":
               useEredmeny(
-                `${inputRef.current.value}Ft = ${(inputRef.current.value / 380).toFixed(2)}€`,
+                `${inputRef.current.value}Ft = ${(Number(inputRef.current.value) / 380).toFixed(2)}€`,
               );
               break;
             case "dollar":
               useEredmeny(
-                `${inputRef.current.value}Ft = ${(inputRef.current.value / 360).toFixed(2)}$`,
+                `${inputRef.current.value}Ft = ${(Number(inputRef.current.value) / 360).toFixed(2)}$`,
               );
               break;
           }
