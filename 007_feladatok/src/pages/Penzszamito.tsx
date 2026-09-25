@@ -8,8 +8,8 @@ const Penzszamito = () => {
   return (
     <>
       <input ref={inputRef} type="number" placeholder="67" />
-      <select onChange={(e) => usePnem(e.target.value)}>
-        <option selected value="euro">
+      <select onChange={(e) => usePnem(e.target.value)} defaultValue="euro">
+        <option value="euro">
           Euró
         </option>
         <option value="dollar">Dollár</option>
