@@ -5,14 +5,14 @@ const Szamologep = () => {
   const elsoRef = useRef<HTMLInputElement>(null);
   // const [masodikSzam, setMasodikSzam] = useState<number>(0);
   const masodikRef = useRef<HTMLInputElement>(null);
-  const [valasztott, setValasztott] = useState<string>("+");
+  const valasztottRef = useRef<HTMLSelectElement>(null);
   const [eredmeny, setEredmeny] = useState<number>(0);
   return (
     <>
       <h2>Számológép</h2>
 
       <input ref={elsoRef} type="number" placeholder="2" />
-      <select onChange={(e) => setValasztott(e.target.value)}>
+      <select ref={valasztottRef}>
         <option selected value="+">
           +
         </option>
@@ -23,7 +23,7 @@ const Szamologep = () => {
       <input ref={masodikRef} type="number" placeholder="3" />
       <button
         onClick={() => {
-          switch (valasztott) {
+          switch (valasztottRef.current.value) {
             case "+":
               setEredmeny(
                 Number(elsoRef.current.value) +
