@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Penzvalto = () => {
+const Penzvalto = () => {
   const [huf, setHuf] = useState<number>(0);
   const [penznem, setPenznem] = useState<string>("euro");
   const [eredmeny, setEredmeny] = useState<string>("");

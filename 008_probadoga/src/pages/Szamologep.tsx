@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Szamologep = () => {
+const Szamologep = () => {
   const [szam1, setSzam1] = useState<number>(0);
   const [szam2, setSzam2] = useState<number>(0);
   const [valasztott, setValasztott] = useState<string>("+");

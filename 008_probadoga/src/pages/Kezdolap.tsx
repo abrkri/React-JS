@@ -1,4 +1,4 @@
-export const Kezdolap = () => {
+const Kezdolap = () => {
   return (
     <>
       <h1>Kezdőlap</h1>
