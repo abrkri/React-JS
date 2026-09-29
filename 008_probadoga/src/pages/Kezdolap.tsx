@@ -1,0 +1,15 @@
+export const Kezdolap = () => {
+  return (
+    <>
+      <h1>Kezdőlap</h1>
+      <a href="/szamologep">
+        <button>Számológép</button>
+      </a>
+      <a href="/penzvalto">
+        <button>Pénzváltó</button>
+      </a>
+    </>
+  );
+};
+
+export default Kezdolap;
