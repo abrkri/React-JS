@@ -6,6 +6,7 @@ import Kezdolap from "./pages/Kezdolap";
 import Szamologep from "./pages/Szamologep";
 import Penzvalto from "./pages/Penzvalto";
 import NotFound from "./pages/NotFound";
+import Homerseklet from "./pages/Homerseklet";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<Kezdolap />} />
         <Route path="/szamologep" element={<Szamologep />} />
         <Route path="/penzvalto" element={<Penzvalto />} />
+        <Route path="/homerseklet" element={<Homerseklet />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

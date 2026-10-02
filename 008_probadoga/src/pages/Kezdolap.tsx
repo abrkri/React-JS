@@ -8,6 +8,9 @@ const Kezdolap = () => {
       <a href="/penzvalto">
         <button>Pénzváltó</button>
       </a>
+      <a href="/homerseklet">
+        <button>Hőmérséklet</button>
+      </a>
     </>
   );
 };
