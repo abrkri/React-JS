@@ -12,8 +12,8 @@ const Homerseklet = () => {
       <input ref={inputRef} type="number" placeholder="36 C°" />
       <button
         onClick={() => {
-          setFarenheit(`${Number(inputRef.current.value) * 1.8 + 32} F`);
-          setKelvin(`${Number(inputRef.current.value) + 273.15} K`);
+          setFarenheit(`${Number(inputRef.current?.value) * 1.8 + 32} F`);
+          setKelvin(`${Number(inputRef.current?.value) + 273.15} K`);
         }}
       >
         Átváltás

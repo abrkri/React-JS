@@ -23,29 +23,29 @@ const Szamologep = () => {
       <input ref={masodikRef} type="number" placeholder="3" />
       <button
         onClick={() => {
-          switch (valasztottRef.current.value) {
+          switch (valasztottRef.current?.value) {
             case "+":
               setEredmeny(
-                Number(elsoRef.current.value) +
-                  Number(masodikRef.current.value),
+                Number(elsoRef.current?.value) +
+                  Number(masodikRef.current?.value),
               );
               break;
             case "-":
               setEredmeny(
-                Number(elsoRef.current.value) -
-                  Number(masodikRef.current.value),
+                Number(elsoRef.current?.value) -
+                  Number(masodikRef.current?.value),
               );
               break;
             case "*":
               setEredmeny(
-                Number(elsoRef.current.value) *
-                  Number(masodikRef.current.value),
+                Number(elsoRef.current?.value) *
+                  Number(masodikRef.current?.value),
               );
               break;
             case "/":
               setEredmeny(
-                Number(elsoRef.current.value) /
-                  Number(masodikRef.current.value),
+                Number(elsoRef.current?.value) /
+                  Number(masodikRef.current?.value),
               );
               break;
             default:

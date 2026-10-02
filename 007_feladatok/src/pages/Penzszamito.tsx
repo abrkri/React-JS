@@ -14,15 +14,15 @@ const Penzszamito = () => {
       </select>
       <button
         onClick={() => {
-          switch (pnemRef.current.value) {
+          switch (pnemRef.current?.value) {
             case "euro":
               useEredmeny(
-                `${inputRef.current.value}Ft = ${(Number(inputRef.current.value) / 380).toFixed(2)}€`,
+                `${inputRef.current?.value}Ft = ${(Number(inputRef.current?.value) / 380).toFixed(2)}€`,
               );
               break;
             case "dollar":
               useEredmeny(
-                `${inputRef.current.value}Ft = ${(Number(inputRef.current.value) / 360).toFixed(2)}$`,
+                `${inputRef.current?.value}Ft = ${(Number(inputRef.current?.value) / 360).toFixed(2)}$`,
               );
               break;
           }

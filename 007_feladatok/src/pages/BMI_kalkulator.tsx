@@ -15,8 +15,8 @@ const BMI = () => {
       <button
         onClick={() => {
           const er =
-            Number(testRef.current.value) /
-            (Number(magassagRef.current.value) / 100) ** 2;
+            Number(testRef.current?.value) /
+            (Number(magassagRef.current?.value) / 100) ** 2;
           if (er < 16) {
             setSzoveg("Az állapotod: Súlyos soványság");
           } else if (er >= 16 && er < 17) {
