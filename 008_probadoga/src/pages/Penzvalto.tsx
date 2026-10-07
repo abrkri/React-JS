@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/cucc.css";
 
 const Penzvalto = () => {
   const [huf, setHuf] = useState<number>(0);

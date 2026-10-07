@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/cucc.css";
 
 const Szamologep = () => {
   const [szam1, setSzam1] = useState<number>(0);

@@ -1,0 +1,17 @@
+input,
+button,
+select {
+  width: 500px;
+  align-self: center;
+  padding: 5px;
+  margin: 10px 0 10px 0;
+}
+
+h1 {
+  margin: 5vh;
+}
+
+p {
+  text-align: center;
+  font-size: large;
+}
