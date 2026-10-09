@@ -53,7 +53,6 @@ const Homepage = () => {
 
   return (
     <>
-      <h1>Csao</h1>
       <Row xs={1} md={3}>
         {character.map((c) => GenerateCard(c))}
       </Row>
