@@ -1,9 +1,19 @@
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { pizzak } from "../data/Pizza";
 import { useRef, useState } from "react";
 import type { Pizza } from "../types/Pizza";
 
 const Homepage = () => {
+  const pizzaHozzaadas = () => {
+    const ujpizza: Pizza = {
+      nev: pnevRef.current?.value,
+      leiras: pleirRef.current?.value,
+      ar: Number(parRef.current?.value),
+      img: pimgRef.current?.value,
+    };
+    setOsszPizza([...osszPizza, ujpizza]);
+  };
+
   const pnevRef = useRef<HTMLInputElement>(null);
   const pleirRef = useRef<HTMLInputElement>(null);
   const parRef = useRef<HTMLInputElement>(null);
@@ -22,69 +32,73 @@ const Homepage = () => {
               <Card.Body>
                 <Card.Title>{p.nev}</Card.Title>
                 <Card.Text>{p.leiras}</Card.Text>
-                <Card.Footer>
+                <Card.Footer style={{ height: 60, fontWeight: "bold" }}>
                   {p.ar} Ft{" "}
-                  {/* <Button
-                    variant="success"
-                    style={{ position: "absolute", right: "15%" }}
+                  <Button
+                    variant="danger"
+                    style={{ float: "right" }}
+                    onClick={() => {
+                      const ujPizzaLista = osszPizza.filter(
+                        (_, i) => i != osszPizza.indexOf(p),
+                      );
+                      setOsszPizza(ujPizzaLista);
+                    }}
                   >
-                    Kosárba
-                  </Button> */}
+                    Törlés
+                  </Button>
                 </Card.Footer>
               </Card.Body>
             </Card>
           </Col>
         ))}
+        ;
       </Row>
       <hr />
 
-      <div style={{ margin: "auto" }}>
+      <div>
         <h2 style={{ textAlign: "center" }}>Pizza hozzáadása</h2>
         <hr />
-        <input
-          style={{ margin: "10px" }}
-          type="text"
-          placeholder="Pizza neve"
-          ref={pnevRef}
-        />
-        <br />
-        <input
-          style={{ margin: "10px" }}
-          type="text"
-          placeholder="Pizza leírása"
-          ref={pleirRef}
-        />
-        <br />
-        <input
-          style={{ margin: "10px" }}
-          type="number"
-          placeholder="Pizza ára"
-          ref={parRef}
-          min={0}
-        />
-        <br />
-        <input
-          style={{ margin: "10px" }}
-          type="text"
-          placeholder="Pizza képe"
-          ref={pimgRef}
-        />
-        <br />
-        <Button
-          style={{ margin: "10px" }}
-          variant="success"
-          onClick={() => {
-            const ujpizza: Pizza = {
-              nev: pnevRef.current?.value,
-              leiras: pleirRef.current?.value,
-              ar: Number(parRef.current?.value),
-              img: pimgRef.current?.value,
-            };
-            setOsszPizza([...osszPizza, ujpizza]);
+
+        <Form
+          style={{ width: "80%", margin: "auto" }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            pizzaHozzaadas();
           }}
         >
-          Hozzáadás
-        </Button>
+          <Form.Control
+            style={{ margin: "10px" }}
+            type="text"
+            placeholder="Pizza neve"
+            ref={pnevRef}
+            required
+          />
+          <Form.Control
+            style={{ margin: "10px" }}
+            type="text"
+            placeholder="Pizza leírása"
+            ref={pleirRef}
+            required
+          />
+          <Form.Control
+            style={{ margin: "10px" }}
+            type="number"
+            placeholder="Pizza ára"
+            ref={parRef}
+            min={0}
+            required
+          />
+          <Form.Control
+            style={{ margin: "10px" }}
+            type="text"
+            placeholder="Pizza képe"
+            ref={pimgRef}
+            required
+          />
+          <Button type="submit" style={{ margin: "10px" }} variant="success">
+            Hozzáadás
+          </Button>
+        </Form>
       </div>
     </>
   );
