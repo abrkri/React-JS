@@ -2,6 +2,7 @@ import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import { pizzak } from "../data/Pizza";
 import { useRef, useState } from "react";
 import type { Pizza } from "../types/Pizza";
+import { toast } from "react-toastify";
 
 const Homepage = () => {
   const pizzaHozzaadas = () => {
@@ -12,6 +13,7 @@ const Homepage = () => {
       img: pimgRef.current?.value,
     };
     setOsszPizza([...osszPizza, ujpizza]);
+    toast.success("Pizza hozzáadva!");
   };
 
   const pnevRef = useRef<HTMLInputElement>(null);
@@ -42,6 +44,7 @@ const Homepage = () => {
                         (_, i) => i != osszPizza.indexOf(p),
                       );
                       setOsszPizza(ujPizzaLista);
+                      toast.error("Pizza törölve!");
                     }}
                   >
                     Törlés
