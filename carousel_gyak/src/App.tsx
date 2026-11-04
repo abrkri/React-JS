@@ -79,10 +79,10 @@ const App = () => {
           variant="success"
           onClick={() => {
             if (
-              nevRef.current &&
-              leirasRef.current &&
-              kep1Ref.current &&
-              kep2Ref.current
+              nevRef.current!.value &&
+              leirasRef.current!.value &&
+              kep1Ref.current!.value &&
+              kep2Ref.current!.value
             ) {
               const newCharacter: Character = {
                 id: characters.length + 1,
@@ -96,7 +96,7 @@ const App = () => {
               leirasRef.current.value = "";
               kep1Ref.current.value = "";
               kep2Ref.current.value = "";
-            }
+            } else toast.error("Fill in every field!", { autoClose: false });
           }}
         >
           Hozzáadás
