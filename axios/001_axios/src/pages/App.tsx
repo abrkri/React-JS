@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import type { Pizza } from "./types/Pizza";
-import apiClient, { BACKEND_URL } from "./api/apiClient";
-import { Card, Col, Row } from "react-bootstrap";
+import type { Pizza } from "../types/Pizza";
+import apiClient, { BACKEND_URL } from "../api/apiClient";
+import { Button, Card, Col, Row } from "react-bootstrap";
 
 function App() {
   const [pizza, setPizza] = useState<Array<Pizza>>([]);
@@ -30,6 +30,15 @@ function App() {
               </Card.Body>
               <Card.Footer>
                 <b>{p.ar} Ft</b>
+                <Button
+                  variant="success"
+                  style={{ float: "right" }}
+                  onClick={() => {
+                    alert("hat ez nincs megcsinalva ocsipok");
+                  }}
+                >
+                  Kosárba
+                </Button>
               </Card.Footer>
             </Card>
           </Col>
