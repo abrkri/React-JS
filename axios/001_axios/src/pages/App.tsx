@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Pizza } from "../types/Pizza";
 import apiClient, { BACKEND_URL } from "../api/apiClient";
 import { Button, Card, Col, Row } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 function App() {
   const [pizza, setPizza] = useState<Array<Pizza>>([]);
@@ -12,6 +13,13 @@ function App() {
       setPizza(response.data);
     });
   }, []);
+
+  const deletePizza = (id: number | undefined) => {
+    apiClient.delete(`/pizzak/${id}`).then(() => {
+      setPizza(pizza.filter((v) => v.id != id));
+      toast.success("Sikeres törlés!");
+    });
+  };
   return (
     <>
       <h1 style={{ textAlign: "center" }}>huu de ehes vagyok</h1>
@@ -31,13 +39,13 @@ function App() {
               <Card.Footer>
                 <b>{p.ar} Ft</b>
                 <Button
-                  variant="success"
+                  variant="danger"
                   style={{ float: "right" }}
                   onClick={() => {
-                    alert("hat ez nincs megcsinalva ocsipok");
+                    deletePizza(p.id);
                   }}
                 >
-                  Kosárba
+                  Törlés
                 </Button>
               </Card.Footer>
             </Card>

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import apiClient, { BACKEND_URL } from "../api/apiClient";
 import { useEffect, useState } from "react";
 import type { Pizza } from "../types/Pizza";
+import NotFound from "./NotFound";
 
 function EgyPizza() {
   const { id } = useParams();
@@ -16,23 +17,29 @@ function EgyPizza() {
   }, [id]);
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>{id}. pizza</h1>
-      <Card style={{ margin: "auto", width: "700px" }}>
-        <Card.Img
-          variant="top"
-          src={`${BACKEND_URL}/kepek/${pizza?.imageUrl}`}
-        />
-        <Card.Body>
-          <Card.Title>{pizza?.nev}</Card.Title>
-          <Card.Text>{pizza?.leiras}</Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <b>{pizza?.ar} Ft</b>
-          <Button variant="success" style={{ float: "right" }}>
-            Kosárba
-          </Button>
-        </Card.Footer>
-      </Card>
+      {pizza ? (
+        <>
+          <h1 style={{ textAlign: "center" }}>{id}. pizza</h1>
+          <Card style={{ margin: "auto", width: "700px" }}>
+            <Card.Img
+              variant="top"
+              src={`${BACKEND_URL}/kepek/${pizza?.imageUrl}`}
+            />
+            <Card.Body>
+              <Card.Title>{pizza?.nev}</Card.Title>
+              <Card.Text>{pizza?.leiras}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <b>{pizza?.ar} Ft</b>
+              <Button variant="danger" style={{ float: "right" }}>
+                Törlés
+              </Button>
+            </Card.Footer>
+          </Card>
+        </>
+      ) : (
+        <NotFound />
+      )}
     </>
   );
 }
