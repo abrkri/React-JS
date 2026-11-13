@@ -4,6 +4,7 @@ import type { Champ } from "../types/C";
 import apiClient, { BACKEND_URL } from "../api/apiClient";
 import { Card, Carousel, CarouselItem } from "react-bootstrap";
 import { toast } from "react-toastify";
+import PageNotFound from "./PageNotFound";
 
 const OneC = () => {
   const { id } = useParams();
@@ -16,7 +17,9 @@ const OneC = () => {
         useChamp(response.data);
       })
       .catch(() =>
-        toast.error("An error occurred while fetching the champion."),
+        toast.error("An error occurred while fetching the champion.", {
+          autoClose: false,
+        }),
       );
   }, [id]);
   return (
@@ -57,9 +60,7 @@ const OneC = () => {
           </Card>
         </>
       ) : (
-        <>
-          <h1 style={{ textAlign: "center" }}>404 - Champion not found</h1>
-        </>
+        <PageNotFound />
       )}
     </>
   );
