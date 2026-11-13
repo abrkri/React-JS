@@ -18,6 +18,12 @@ const Homepage = () => {
       useChamps(response.data);
     });
   }, []);
+
+  const deleteChamp = (id: number | undefined) => {
+    apiClient.delete(`/champions/${id}`).then(() => {
+      useChamps(champs.filter((v) => v.id !== id));
+    });
+  };
   return (
     <>
       <h1 style={{ textAlign: "center" }}>LoL Champs</h1>
@@ -56,7 +62,11 @@ const Homepage = () => {
               </Card.Body>
               <Card.Footer>
                 {c.blue_essence} Blue Essence
-                <Button variant="danger" style={{ float: "right" }}>
+                <Button
+                  variant="danger"
+                  style={{ float: "right" }}
+                  onClick={() => deleteChamp(c.id)}
+                >
                   Delete
                 </Button>
               </Card.Footer>
