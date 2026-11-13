@@ -9,6 +9,7 @@ import {
   Col,
   Row,
 } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 const Homepage = () => {
   const [champs, useChamps] = useState<Array<Champ>>([]);
@@ -22,6 +23,7 @@ const Homepage = () => {
   const deleteChamp = (id: number | undefined) => {
     apiClient.delete(`/champions/${id}`).then(() => {
       useChamps(champs.filter((v) => v.id !== id));
+      toast.success("Champion deleted successfully!");
     });
   };
   return (
