@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import type { Champ } from "../types/C";
 import apiClient, { BACKEND_URL } from "../api/apiClient";
-import { Card, Carousel, CarouselItem, Col, Row } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Carousel,
+  CarouselItem,
+  Col,
+  Row,
+} from "react-bootstrap";
 
 const Homepage = () => {
   const [champs, useChamps] = useState<Array<Champ>>([]);
@@ -47,7 +54,12 @@ const Homepage = () => {
                   </p>
                 </Card.Text>
               </Card.Body>
-              <Card.Footer>{c.blue_essence} Blue Essence</Card.Footer>
+              <Card.Footer>
+                {c.blue_essence} Blue Essence
+                <Button variant="danger" style={{ float: "right" }}>
+                  Delete
+                </Button>
+              </Card.Footer>
             </Card>
           </Col>
         ))}

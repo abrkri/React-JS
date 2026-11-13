@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import type { Champ } from "../types/C";
 import apiClient, { BACKEND_URL } from "../api/apiClient";
-import { Card, Carousel, CarouselItem } from "react-bootstrap";
+import { Button, Card, Carousel, CarouselItem } from "react-bootstrap";
 import { toast } from "react-toastify";
 import PageNotFound from "./PageNotFound";
 
@@ -56,7 +56,12 @@ const OneC = () => {
                 </p>
               </Card.Text>
             </Card.Body>
-            <Card.Footer>{champ?.blue_essence} Blue Essence</Card.Footer>
+            <Card.Footer>
+              {champ?.blue_essence} Blue Essence
+              <Button variant="danger" style={{ float: "right" }}>
+                Delete
+              </Button>
+            </Card.Footer>
           </Card>
         </>
       ) : (
