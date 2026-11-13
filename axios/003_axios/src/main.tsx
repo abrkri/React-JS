@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import OneC from "./pages/OneC";
 import PageNotFound from "./pages/PageNotFound";
+import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -15,5 +16,6 @@ createRoot(document.getElementById("root")!).render(
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
+    <ToastContainer theme="colored" closeOnClick={true} />
   </StrictMode>,
 );
