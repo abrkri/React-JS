@@ -26,6 +26,7 @@ const Homepage = () => {
       toast.success("Champion deleted successfully!");
     });
   };
+
   return (
     <>
       <h1 style={{ textAlign: "center" }}>LoL Champs</h1>
