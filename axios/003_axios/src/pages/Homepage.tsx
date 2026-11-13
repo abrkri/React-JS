@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import type { Champ } from "../types/C";
 import apiClient, { BACKEND_URL } from "../api/apiClient";
 import { Card, Carousel, CarouselItem, Col, Row } from "react-bootstrap";
-import { toast } from "react-toastify";
 
 const Homepage = () => {
   const [champs, useChamps] = useState<Array<Champ>>([]);
