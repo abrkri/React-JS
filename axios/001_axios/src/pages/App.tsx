@@ -41,6 +41,37 @@ function App() {
       );
   };
 
+  const putPizza = () => {
+    const formData = new FormData(
+      document.getElementById("putPizzaForm") as HTMLFormElement,
+    );
+
+    const pizzaData = {
+      ...Object.fromEntries(formData.entries()),
+      id: Number(formData.get("id")),
+      ar: Number(formData.get("ar")),
+    } as Pizza;
+
+    const { id, ...pizzaWithoutId } = pizzaData;
+
+    apiClient
+      .put(`/pizzak/${id}`, pizzaWithoutId)
+      .then(() => {
+        setPizza((prevPizza) =>
+          prevPizza.map((p) => (p.id === id ? pizzaData : p)),
+        );
+
+        toast.success("Sikeres módosítás!");
+      })
+      .catch((error) => {
+        console.error("PUT hiba:", error.response?.data || error);
+
+        toast.error("Hiba történt a pizza módosításakor!", {
+          autoClose: false,
+        });
+      });
+  };
+
   return (
     <>
       <h1 style={{ textAlign: "center" }}>huu de ehes vagyok</h1>
@@ -74,46 +105,102 @@ function App() {
         ))}
       </Row>
       <hr />
-      <h2 style={{ textAlign: "center" }}>Új pizza hozzáadása</h2>
-      <Form
-        id="addPizzaForm"
-        style={{ width: "50%", margin: "auto", padding: "20px" }}
-        onSubmit={() => {
-          addPizza();
-        }}
-      >
-        <FormControl
-          name="nev"
-          placeholder="Pizza neve"
-          required
-          type="text"
-          style={{ marginBottom: "10px", width: "100%" }}
-        />
-        <FormControl
-          name="leiras"
-          placeholder="Pizza leírása"
-          required
-          type="text"
-          style={{ marginBottom: "10px", width: "100%" }}
-        />
-        <FormControl
-          name="ar"
-          placeholder="Pizza ára"
-          type="number"
-          required
-          style={{ marginBottom: "10px", width: "100%" }}
-        />
-        <FormControl
-          name="imageUrl"
-          placeholder="Pizza kép URL"
-          required
-          type="text"
-          style={{ marginBottom: "10px", width: "100%" }}
-        />
-        <Button type="submit" variant="success" style={{ width: "100%" }}>
-          Új pizza hozzáadása
-        </Button>
-      </Form>
+      <div>
+        <Row md={2} style={{ margin: "auto", padding: "20px" }}>
+          <Col>
+            <h2 style={{ textAlign: "center" }}>Pizza hozzáadása</h2>
+            <Form
+              id="addPizzaForm"
+              style={{ width: "50%", margin: "auto", padding: "20px" }}
+              onSubmit={() => {
+                addPizza();
+              }}
+            >
+              <FormControl
+                name="nev"
+                placeholder="Pizza neve"
+                required
+                type="text"
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <FormControl
+                name="leiras"
+                placeholder="Pizza leírása"
+                required
+                type="text"
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <FormControl
+                name="ar"
+                placeholder="Pizza ára"
+                type="number"
+                required
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <FormControl
+                name="imageUrl"
+                placeholder="Pizza kép URL"
+                required
+                type="text"
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <Button type="submit" variant="success" style={{ width: "100%" }}>
+                Új pizza hozzáadása
+              </Button>
+            </Form>
+          </Col>
+          <Col>
+            <h2 style={{ textAlign: "center" }}>Pizza módosítása</h2>
+            <Form
+              id="putPizzaForm"
+              style={{ width: "50%", margin: "auto", padding: "20px" }}
+              onSubmit={(e) => {
+                e.preventDefault();
+                putPizza();
+              }}
+            >
+              <FormControl
+                name="id"
+                placeholder="Pizza azonosítója"
+                required
+                type="number"
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <FormControl
+                name="nev"
+                placeholder="Pizza neve"
+                required
+                type="text"
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <FormControl
+                name="leiras"
+                placeholder="Pizza leírása"
+                required
+                type="text"
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <FormControl
+                name="ar"
+                placeholder="Pizza ára"
+                required
+                type="number"
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <FormControl
+                name="imageUrl"
+                placeholder="Pizza kép URL"
+                required
+                type="text"
+                style={{ marginBottom: "10px", width: "100%" }}
+              />
+              <Button type="submit" variant="success" style={{ width: "100%" }}>
+                Pizza módosítása
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </div>
     </>
   );
 }
